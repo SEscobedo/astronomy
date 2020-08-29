@@ -27,14 +27,27 @@ window.onload = function() {
         const ndays = DaysInMonth(ActiveYear, ActiveMonth);
         let dow = (new Date(ActiveYear, ActiveMonth-1, 1)).getDay();    // day of week 0..6
         let row = 0;
+        let visible = {};
         for (let d=1; d <= ndays; ++d) {
-            const cell = document.getElementById(`CalendarDay${row}${dow}`);
+            const id = `CalendarDay${row}${dow}`;
+            visible[id] = true;
+            const cell = document.getElementById(id);
+            cell.className = (dow===0 || dow===6) ? 'Weekend' : 'Weekday';
             cell.innerText = d.toFixed(0);
             if (dow === 6) {
                 ++row;
                 dow = 0;
             } else {
                 ++dow;
+            }
+        }
+        for (row=0; row < 6; ++row) {
+            for (dow=0; dow < 7; ++dow) {
+                const id = `CalendarDay${row}${dow}`;
+                if (!visible[id]) {
+                    const cell = document.getElementById(id);
+                    cell.className = 'Placeholder';
+                }
             }
         }
     }
