@@ -38,18 +38,20 @@
 
 .Placeholder {
     height: 90px;
-    vertical-align: top;
     border-style: solid;
     border-width: 1px;
 }
 
-.CalendarMonthYear {
+.CalendarHeader {
     text-align: center;
     height: 30px;
-    font-family: Sans-Serif;
-    font-size:xx-large;
     border-style:solid;
     border-width:1px;
+}
+
+.CalendarMonthYear {
+    font-family: Sans-Serif;
+    font-size:xx-large;
 }
 
 .ExtraInfo {
